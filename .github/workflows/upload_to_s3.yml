@@ -25,8 +25,9 @@ jobs:
           role-to-assume: arn:aws:iam::767398122165:role/GitHubAction-AssumeRoleWithAction
           role-session-name: GitHub_to_AWS_via_FederatedOIDC
           aws-region: ${{ env.AWS_REGION }}
-      - name: Send to S3
+      - name: get repo
         uses: actions/checkout@v2
+      - name: tar and upload to S3
         run: |
           repoTar=$(echo ${{ github.repository }} | cut -d'/' -f2).tar.gz
           tar -czvf --exclude='.git*' {$repoTar} .
