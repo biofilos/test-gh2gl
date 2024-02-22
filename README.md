@@ -11,3 +11,5 @@
 - Use the policy in `trust_policy.json`
 - Create a role with the trust policy: `aws iam create-role --role-name GitHubAction-AssumeRoleWithAction --assume-role-policy-document file://trust_policy.json`
 - Allow the created role to upload files to a specific path in an S3 bucket using the policy from `bucket_access.json`: `aws iam put-role-policy --role-name GitHubAction-AssumeRoleWithAction --policy-name GitHubAction-AssumeRoleWithAction --policy-document file://bucket_access.json`
+
+add noise to trigger
