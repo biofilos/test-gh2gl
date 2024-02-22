@@ -31,4 +31,4 @@ jobs:
         run: |
           repoTar=$(echo ${{ github.repository }} | cut -d'/' -f2).tar.gz
           tar -czvf --exclude='.git*' {$repoTar} .
-          aws s3 cp {$repoTar} s3://${BUCKET}/pipelines/.tar.gz
+          aws s3 cp {$repoTar} s3://${BUCKET}/pipelines/{$repoTar}
