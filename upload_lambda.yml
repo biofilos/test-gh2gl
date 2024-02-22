@@ -1,0 +1,25 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Triggered by S3 event to upload to S3
+
+Resources:
+  UploadLambdaFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: scripts/upload.py
+      Handler: upload.lambda_handler
+      Runtime: python3.8
+      Events:
+        S3UploadEvent:
+          Type: S3
+          Properties:
+            Bucket: lb-gh2gl
+            Events: s3:ObjectCreated:*
+            Filter:
+              S3Key:
+                Rules:
+                  - Name: prefix
+                    Value: pipelines/
+
+  UploadBucket:
+    Type: AWS::S3::Bucket
