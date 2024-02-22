@@ -13,7 +13,7 @@ Resources:
         S3UploadEvent:
           Type: S3
           Properties:
-            Bucket: lb-gh2gl
+            Bucket: !Ref UploadBucket
             Events: s3:ObjectCreated:*
             Filter:
               S3Key:

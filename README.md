@@ -12,4 +12,7 @@
 - Create a role with the trust policy: `aws iam create-role --role-name GitHubAction-AssumeRoleWithAction --assume-role-policy-document file://trust_policy.json`
 - Allow the created role to upload files to a specific path in an S3 bucket using the policy from `bucket_access.json`: `aws iam put-role-policy --role-name GitHubAction-AssumeRoleWithAction --policy-name GitHubAction-AssumeRoleWithAction --policy-document file://bucket_access.json`
 
-add noise to trigger
+## Lambda function
+SAM will be used to create the lambda function. The function will be triggered by the S3 bucket when a file is uploaded. The function will then copy the file to another S3 bucket.
+- Package lambda: ` sam package --template-file upload_lambda.yml --output-template-file pkg_lambda.yaml --s3-bucket lb-gh2gl --region ap-southeast-1`
+- Deploy lambda: `sam deploy --template-file pkg_lambda.yaml --stack-name upload-lambda --region ap-southeast-1 --capabilities CAPABILITY_IAM`
