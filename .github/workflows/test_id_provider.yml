@@ -27,3 +27,4 @@ jobs:
       - name: Sts GetCallerIdentity
         run: |
           aws sts get-caller-identity
+          echo "Repository name is $(echo ${{ github.repository }} | cut -d'/' -f2)"
