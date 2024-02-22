@@ -17,6 +17,11 @@ Resources:
           Properties:
             Bucket: !Ref RepoBucket
             Events: s3:ObjectCreated:*
+            Filter:
+              S3Key:
+                Rules:
+                  - Name: prefix
+                    Value: pipelines/
   RepoBucket:
     Type: "AWS::S3::Bucket"
     Properties:
