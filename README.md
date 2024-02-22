@@ -14,5 +14,5 @@
 
 ## Lambda function
 SAM will be used to create the lambda function. The function will be triggered by the S3 bucket when a file is uploaded. The function will then copy the file to another S3 bucket.
-- Package lambda: ` sam package --template-file upload_lambda.yml --output-template-file pkg_lambda.yaml --s3-bucket lb-gh2gl --region ap-southeast-1`
+- Package lambda: `sam package --template-file upload_lambda.yml --output-template-file pkg_lambda.yaml --s3-bucket lb-lambdas --region ap-southeast-1`
 - Deploy lambda: `sam deploy --template-file pkg_lambda.yaml --stack-name upload-lambda --region ap-southeast-1 --capabilities CAPABILITY_IAM`
