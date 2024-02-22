@@ -1,5 +1,4 @@
 ## Add OIDC
-- Use the base account (not the account created above)
 - Provider URL: `https://token.actions.githubusercontent.com`.
 - Get the certificate from Github: `$ openssl s_client -servername token.actions.githubusercontent.com -showcerts -connect token.actions.githubusercontent.com:443 < /dev/null 2>/dev/null | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sed "0,/-END CERTIFICATE-/d" > certificate.crt`
 - Calculate fingerprint: `openssl x509 -in certificate.crt -fingerprint -sha1 -noout | sed 's/sha1 Fingerprint=//g' | sed 's/://g'`
