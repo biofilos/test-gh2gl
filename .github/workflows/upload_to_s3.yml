@@ -30,5 +30,5 @@ jobs:
       - name: tar and upload to S3
         run: |
           repoTar=$(echo ${{ github.repository }} | cut -d'/' -f2).tar.gz
-          tar -czvf --exclude='.git*' ${repoTar} .
+          tar -czvf  ${repoTar} --exclude='.git*' .
           aws s3 cp ${repoTar} s3://${BUCKET}/pipelines/${repoTar}
