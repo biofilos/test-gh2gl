@@ -27,6 +27,7 @@ jobs:
           aws-region: ${{ env.AWS_REGION }}
       - name: Send to S3
         run: |
+          repoTar=$(echo ${{ github.repository }} | cut -d'/' -f2).tar.gz
           rm -rf .git*
-          tar -czvf repo.tar.gz .
-          aws s3 cp repo.tar.gz s3://${BUCKET}/pipelines/$(echo ${{ github.repository }} | cut -d'/' -f2)
+          tar -czvf {$repoTar} .
+          aws s3 cp {$repoTar} s3://${BUCKET}/pipelines/.tar.gz
