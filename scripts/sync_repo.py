@@ -1,10 +1,13 @@
 import json
+import boto3
 
 
 def lambda_handler(event, context):
     with open('/tmp/repo.json', 'w') as f:
         f.write(json.dumps(event))
-    print(event["Records"][0]["s3"]["object"]["key"])
+    obj_key = event["Records"][0]["s3"]["object"]["key"]
+    s3 = boto3.resource('s3')
+    s3.Bucket('lb-gh2gl').upload_file('/tmp/repo.json', f'{obj_key.split(".")[0]}.json')
     return {
         'statusCode': 200,
         'event': json.dumps(event)
