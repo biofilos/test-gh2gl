@@ -6,7 +6,7 @@ Resources:
   SyncRepo:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: scripts/
+      CodeUri: fx/
       Handler: sync_repo.lambda_handler
       Runtime: python3.10
       MemorySize: 128
