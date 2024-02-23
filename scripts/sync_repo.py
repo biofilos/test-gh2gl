@@ -1,7 +1,7 @@
 import json
 import boto3
 from pathlib import Path
-
+import gitlab
 
 def lambda_handler(event, context):
     with open('/tmp/repo.json', 'w') as f:
