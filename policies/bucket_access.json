@@ -11,6 +11,7 @@
             ],
             "Resource": [
                 "arn:aws:s3:::lb-gh2gl/pipelines/*",
+                "arn:aws:s3:::lb-gh2gl/manifests/*",
                 "arn:aws:s3:::lb-gh2gl"
             ]
         }
