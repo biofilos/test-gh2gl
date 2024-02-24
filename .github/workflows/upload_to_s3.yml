@@ -31,3 +31,4 @@ jobs:
           repoTar=$(echo ${{ github.repository }} | cut -d'/' -f2).tar.gz
           tar -czvf  ${repoTar} ${files}
           aws s3 cp ${repoTar} s3://${BUCKET}/pipelines/${repoTar}
+git
