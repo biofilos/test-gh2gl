@@ -17,3 +17,11 @@ SAM will be used to create the lambda function. The function will be triggered b
 - Deploy lambda: `sam deploy --template-file pkg_lambda.yaml --stack-name upload-lambda --region ap-southeast-1 --capabilities CAPABILITY_IAM`
 ## Gitlab access
 Generate access tokens following the [gitlab documentation](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html)
+## Git
+Git does not work with python lambda functions. So the idea is to trigger a ci/cd pipeline in gitlab from this lambda function, and then use the gitlab pipeline to push the files to the git repository.
+### Add UIDC
+Follow [this guide](https://docs.gitlab.com/ee/ci/cloud_services/aws/)
+```shell
+aws iam create-open-id-connect-provider --cli-input-json file://id_provider_gitlab.json
+aws iam create-role --role-name GitLab-AssumeRoleWithCICD --assume-role-policy-document file://policies/trust_policy_gitlab.json
+```

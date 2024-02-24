@@ -1,10 +1,8 @@
 import json
-import boto3
 from pathlib import Path
 import gitlab
 from aws_lambda_powertools.utilities import parameters
 import os
-import git
 import boto3
 
 
@@ -26,6 +24,7 @@ def lambda_handler(event, context):
     gl_private_token = json.loads(parameters.get_secret("gitlab_token"))
     gl = gitlab.Gitlab(gl_domain, private_token=gl_private_token["gl_token"])
     gl.auth()
+    gl.projects.list(get_all=True)
 
     return {
         'statusCode': 200,
