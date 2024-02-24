@@ -31,4 +31,4 @@ jobs:
           repo=$(echo ${{ github.repository }} | cut -d'/' -f2)
           tar -czvf  ${repo}.tar.gz ${files}
           aws s3 cp ${repo}.tar.gz s3://${BUCKET}/pipelines/${repo}.tar.gz
-          aws s3 cp MANIFEST.json s3://${BUCKET}/manifests/{repo}.json
+          aws s3 cp MANIFEST.json s3://${BUCKET}/manifests/${repo}.json
