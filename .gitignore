@@ -1,2 +1,4 @@
 .idea
 pkg_lambda.yaml
+venv
+.aws-sam

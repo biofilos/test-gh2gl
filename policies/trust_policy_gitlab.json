@@ -1,0 +1,17 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "Federated": "arn:aws:iam::767398122165:oidc-provider/gitlab.com"
+            },
+            "Action": "sts:AssumeRoleWithWebIdentity",
+            "Condition": {
+                "StringLike": {
+                    "gitlab.com:sub": "project_path:alekosbiofilos/*:ref_type:branch:ref:*"
+                }
+            }
+        }
+    ]
+}

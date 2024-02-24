@@ -1,0 +1,38 @@
+{
+  "Records": [
+    {
+      "eventVersion": "2.1",
+      "eventSource": "aws:s3",
+      "awsRegion": "ap-southeast-1",
+      "eventTime": "2024-02-22T14:53:45.259Z",
+      "eventName": "ObjectCreated:Put",
+      "userIdentity": {
+        "principalId": "AWS:AROA3FLD6CK23BC7AFWNB:upload-lambda-SyncRepo-ZJ7gBna9Qc9T"
+      },
+      "requestParameters": {
+        "sourceIPAddress": "13.212.197.73"
+      },
+      "responseElements": {
+        "x-amz-request-id": "FH0YZSK3XB8N3DJ2",
+        "x-amz-id-2": "JDNtOo4MgHE2lPshkcMlUx6XTQ0jitvVK/bDOiDsax/iHonkH+1O9HUQTBkPMThXfMrdMVfAbvTfg66CUTUEsYn/h4s5Ooz+"
+      },
+      "s3": {
+        "s3SchemaVersion": "1.0",
+        "configurationId": "ZTNhNmZmZDItYTBiOS00ZmE0LWI1YTQtNWY2NzQ5NGQ0ZDFj",
+        "bucket": {
+          "name": "lb-gh2gl",
+          "ownerIdentity": {
+            "principalId": "AK3I9I89ZJJ9E"
+          },
+          "arn": "arn:aws:s3:::lb-gh2gl"
+        },
+        "object": {
+          "key": "pipelines/test-gh2gl.json",
+          "size": 862,
+          "eTag": "c206b8212e69b51200df1753a0e6b382",
+          "sequencer": "0065D75FF939E44E6F"
+        }
+      }
+    }
+  ]
+}

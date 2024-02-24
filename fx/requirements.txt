@@ -1,0 +1,4 @@
+python-gitlab
+urllib3<2
+boto3
+aws_lambda_powertools

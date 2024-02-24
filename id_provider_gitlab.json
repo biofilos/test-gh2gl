@@ -1,0 +1,15 @@
+{
+    "Url": "https://gitlab.com",
+    "ClientIDList": [
+        "https://gitlab.com"
+    ],
+    "ThumbprintList": [
+        "33E4E80807204C2B6182A3A14B591ACD25B5F0DB"
+    ],
+    "Tags": [
+        {
+            "Key": "purpose",
+            "Value": "gitlab-ci/cd"
+        }
+    ]
+}

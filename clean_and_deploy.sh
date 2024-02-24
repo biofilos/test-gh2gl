@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
+set -e
 
-#sam delete --stack-name upload-lambda --no-prompts
-sam package --template-file upload_lambda.yml --output-template-file pkg_lambda.yaml --s3-bucket lb-lambdas --region ap-southeast-1
-sam deploy --template-file pkg_lambda.yaml --stack-name upload-lambda --region ap-southeast-1 --capabilities CAPABILITY_IAM
+REGION=ap-southeast-1
+SAM_DOC=upload_lambda.yml
+PKG_DOC=pkg_lambda.yaml
+STACK_NAME=upload-lambda
+CF_BUCKET=lb-lambdas
+
+sam build -t ${SAM_DOC}
+sam package --output-template-file ${PKG_DOC} --s3-bucket ${CF_BUCKET} --region ${REGION}
+sam deploy --template-file ${PKG_DOC} --stack-name ${STACK_NAME} --region ${REGION} --capabilities CAPABILITY_IAM
