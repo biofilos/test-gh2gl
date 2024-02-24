@@ -4,32 +4,9 @@ from pathlib import Path
 import gitlab
 from aws_lambda_powertools.utilities import parameters
 import os
-
+import git
 import boto3
 
-# def get_secret(secret_name, region_name):
-#     session = boto3.session.Session()
-#     client = session.client(
-#         service_name='secretsmanager',
-#         region_name=region_name
-#     )
-#
-#     get_secret_value_response = client.get_secret_value(
-#         SecretId=secret_name
-#     )
-#
-#     if 'SecretString' in get_secret_value_response:
-#         secret = get_secret_value_response['SecretString']
-#     else:
-#         secret = base64.b64decode(get_secret_value_response['SecretBinary'])
-#
-#     return secret
-#
-# # Usage
-# secret_name = "gitlab_token"
-# region_name = "us-west-2"  # replace with your AWS region
-
-# gl_private_token = get_secret(secret_name, region_name)
 
 def lambda_handler(event, context):
     with open('/tmp/repo.json', 'w') as f:
