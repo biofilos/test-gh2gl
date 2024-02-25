@@ -27,7 +27,7 @@
           "arn": "arn:aws:s3:::lb-gh2gl"
         },
         "object": {
-          "key": "pipelines/test-gh2gl.json",
+          "key": "pipelines/test-gh2gl.tar.gz",
           "size": 862,
           "eTag": "c206b8212e69b51200df1753a0e6b382",
           "sequencer": "0065D75FF939E44E6F"

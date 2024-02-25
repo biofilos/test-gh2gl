@@ -19,9 +19,10 @@ def lambda_handler(event, context):
         obj_key = obj_key.with_suffix('')
     s3 = boto3.client('s3')
     base_name = obj_key.stem
-    manifest_path = Path(f"/manifests/{base_name}.json")
-    s3.download_file(bucket, obj_key, str(manifest_path))
-    manifest = json.load(manifest_path.open())
+    manifest_s3 = f"manifests/{base_name}.json"
+    manifest_local = f"/tmp/{base_name}.json"
+    s3.download_file(bucket, manifest_s3, manifest_local)
+    manifest = json.load(open(manifest_local))
     gitlab_repo = manifest["gitlab_repo"]
     branch = manifest["branch"]
     ## Gitlab section
@@ -33,7 +34,7 @@ def lambda_handler(event, context):
     trigger = project.triggers.create({
         "description": "Triggered by lambda"
     })
-    vars = {"s3_path": f"s3://{bucket}/{obj_key_str}", "gitlab_path": obj_key_str}
+    vars = {"s3_path": f"s3://{bucket}/{obj_key_str}", "gitlab_path": obj_key_str, "run_now": "yes"}
 
     pipeline = project.trigger_pipeline(branch, trigger.token, variables=vars)
     while pipeline.finished_at is None:
