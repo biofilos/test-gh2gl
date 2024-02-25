@@ -27,14 +27,20 @@ def lambda_handler(event, context):
     branch = manifest["branch"]
     ## Gitlab section
     gl_domain = "https://gitlab.com"
-    gl_private_token = json.loads(parameters.get_secret("gitlab_token"))
-    gl = gitlab.Gitlab(gl_domain, private_token=gl_private_token["gl_token"])
+    gl_private_token = json.loads(parameters.get_secret("gitlab_token"))["gl_token"]
+    gl = gitlab.Gitlab(gl_domain, private_token=gl_private_token)
     gl.auth()
     project = gl.projects.get(gitlab_repo)
     trigger = project.triggers.create({
         "description": "Triggered by lambda"
     })
-    vars = {"s3_path": f"s3://{bucket}/{obj_key_str}", "gitlab_path": obj_key_str, "run_now": "yes"}
+    vars = {
+        "s3_path": f"s3://{bucket}/{obj_key_str}",
+        "gitlab_path": obj_key_str, "run_now": "yes",
+        "access_token": gl_private_token,
+        "branch": branch,
+        "gitlab_repo": gitlab_repo
+    }
 
     pipeline = project.trigger_pipeline(branch, trigger.token, variables=vars)
     while pipeline.finished_at is None:

@@ -25,3 +25,5 @@ Follow [this guide](https://docs.gitlab.com/ee/ci/cloud_services/aws/)
 aws iam create-open-id-connect-provider --cli-input-json file://id_provider_gitlab.json
 aws iam create-role --role-name GitLab-AssumeRoleWithCICD --assume-role-policy-document file://policies/trust_policy_gitlab.json
 ```
+
+Fx triggered
