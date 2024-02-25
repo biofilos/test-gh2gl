@@ -26,4 +26,4 @@ aws iam create-open-id-connect-provider --cli-input-json file://id_provider_gitl
 aws iam create-role --role-name GitLab-AssumeRoleWithCICD --assume-role-policy-document file://policies/trust_policy_gitlab.json
 ```
 
-Fx triggered again
+Fx triggered again.
